@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Style guide</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    /* Page-only helpers for this guide (not part of the kit). */
+    .swatches {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+      gap: var(--space-2);
+    }
+
+    .swatch {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--surface);
+      font-size: var(--text-xs);
+    }
+
+    .swatch i {
+      display: block;
+      padding-top: var(--space-6);
+    }
+
+    .swatch span {
+      display: block;
+      padding: var(--space-1) var(--space-2);
+      color: var(--text-muted);
+    }
+
+    .demo {
+      padding: var(--space-5);
+      border: 1px dashed var(--border-strong);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+    }
+
+    .bar {
+      background: var(--accent);
+      border-radius: var(--radius-sm);
+      height: var(--space-3);
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="sticky bg-surface border-b">
+    <div class="container flex items-center justify-between py-4">
+      <strong>Style guide</strong>
+      <a class="link-muted" href="./html-reference.html">
+        HTML Reference</a>
+      </nav>
+      <button class="btn btn--secondary btn--sm" id="theme-toggle" type="button">Switch to dark</button>
+    </div>
+  </header>
+
+  <main id="main" class="container section stack-lg">
+    <section class="stack">
+      <h1>Design system</h1>
+      <p class="text-muted">Every token and component in the kit. Change a value in <code>tokens.css</code> and this
+        page updates.</p>
+    </section>
+
+    <section class="stack" aria-labelledby="colors">
+      <h2 id="colors">Colors</h2>
+      <div id="color-scales" class="stack"></div>
+    </section>
+
+    <section class="stack" aria-labelledby="type">
+      <h2 id="type">Typography</h2>
+      <div class="demo stack-sm">
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <p>Body text uses Inter at a fluid size with generous line height for easy reading.</p>
+        <p class="text-sm text-muted">Small, muted secondary text.</p>
+      </div>
+    </section>
+
+    <section class="stack" aria-labelledby="space">
+      <h2 id="space">Spacing, radius, shadows</h2>
+      <div class="demo stack-sm" id="spacing"></div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="radius-shadow"></div>
+    </section>
+
+    <section class="stack" aria-labelledby="buttons">
+      <h2 id="buttons">Buttons</h2>
+      <div class="demo flex flex-wrap gap-3 items-center">
+        <button class="btn btn--primary" type="button">Primary</button>
+        <button class="btn btn--secondary" type="button">Secondary</button>
+        <button class="btn btn--ghost" type="button">Ghost</button>
+        <button class="btn btn--danger" type="button">Delete</button>
+        <button class="btn btn--primary" type="button" disabled>Disabled</button>
+        <button class="btn btn--primary btn--loading" type="button" aria-label="Saving">Saving</button>
+        <button class="btn btn--primary btn--sm" type="button">Small</button>
+        <button class="btn btn--primary btn--lg" type="button">Large</button>
+      </div>
+    </section>
+
+    <section class="stack" aria-labelledby="forms">
+      <h2 id="forms">Inputs</h2>
+      <div class="demo grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="field"><label class="label" for="g-name">Full name</label><input class="input" id="g-name"
+            placeholder="Ada Lovelace"><span class="hint">As it appears on your invoice.</span></div>
+        <div class="field"><label class="label" for="g-email">Email</label><input class="input" id="g-email"
+            type="email" value="not-an-email" aria-invalid="true" aria-describedby="g-email-err"><span
+            class="hint hint--error" id="g-email-err">Enter a valid email address.</span></div>
+        <div class="field"><label class="label" for="g-plan">Plan</label><select class="select" id="g-plan">
+            <option>Starter</option>
+            <option>Pro</option>
+          </select></div>
+        <div class="field"><label class="label" for="g-off">Disabled</label><input class="input" id="g-off"
+            value="Read only" disabled></div>
+        <div class="field" style="grid-column: 1 / -1"><label class="label" for="g-msg">Message</label><textarea
+            class="textarea" id="g-msg" placeholder="Tell us what you need."></textarea></div>
+        <label class="check"><input type="checkbox" checked> Send me product updates</label>
+      </div>
+    </section>
+
+    <section class="stack" aria-labelledby="cards">
+      <h2 id="cards">Cards, badges, alerts</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <article class="card card--interactive">
+          <div class="card__body stack-sm">
+            <h3 class="card__title">Interactive card</h3>
+            <p class="text-muted text-sm">Lifts slightly on hover. Use for clickable items.</p>
+          </div>
+          <div class="card__footer flex gap-2"><span class="badge">Default</span><span
+              class="badge badge--primary">Primary</span><span class="badge badge--success">Paid</span><span
+              class="badge badge--warning">Pending</span><span class="badge badge--danger">Overdue</span></div>
+        </article>
+        <div class="stack-sm">
+          <div class="alert" role="status"><strong class="alert__title">Heads up</strong>Your trial ends in 3 days.
+          </div>
+          <div class="alert alert--success" role="status"><strong class="alert__title">Saved</strong>Your changes are
+            live.</div>
+          <div class="alert alert--warning" role="status"><strong class="alert__title">Almost full</strong>You have used
+            90% of your storage.</div>
+          <div class="alert alert--danger" role="alert"><strong class="alert__title">Payment failed</strong>Update your
+            card to keep your plan.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stack" aria-labelledby="table">
+      <h2 id="table">Table</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Customer</th>
+              <th scope="col">Status</th>
+              <th scope="col">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Northwind Ltd</td>
+              <td><span class="badge badge--success">Paid</span></td>
+              <td>£1,200</td>
+            </tr>
+            <tr>
+              <td>Acme Co</td>
+              <td><span class="badge badge--warning">Pending</span></td>
+              <td>£480</td>
+            </tr>
+            <tr>
+              <td>Globex</td>
+              <td><span class="badge badge--danger">Overdue</span></td>
+              <td>£2,050</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="stack" aria-labelledby="interactive">
+      <h2 id="interactive">Tabs, dropdown, modal, toast</h2>
+      <div class="demo stack">
+        <div class="tabs" id="tabs">
+          <div class="tabs__list" role="tablist" aria-label="Example tabs">
+            <button class="tabs__tab" role="tab" id="t1" aria-controls="p1" aria-selected="true"
+              type="button">Overview</button>
+            <button class="tabs__tab" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1"
+              type="button">Activity</button>
+            <button class="tabs__tab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1"
+              type="button">Settings</button>
+          </div>
+          <div class="tabs__panel" role="tabpanel" id="p1" aria-labelledby="t1">Overview content.</div>
+          <div class="tabs__panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>Activity content.</div>
+          <div class="tabs__panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>Settings content.</div>
+        </div>
+        <div class="flex flex-wrap gap-3 items-start">
+          <details class="dropdown">
+            <summary class="btn btn--secondary">Actions</summary>
+            <div class="dropdown__menu"><a class="dropdown__item" href="#">Edit</a><a class="dropdown__item"
+                href="#">Duplicate</a><button class="dropdown__item dropdown__item--danger"
+                type="button">Delete</button></div>
+          </details>
+          <button class="btn btn--primary" type="button" id="open-modal">Open modal</button>
+          <button class="btn btn--secondary" type="button" id="show-toast">Show toast</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="modal" id="modal" aria-labelledby="modal-title">
+    <div class="modal__header">
+      <h2 class="modal__title" id="modal-title">Delete project?</h2><button class="btn btn--ghost btn--sm" type="button"
+        data-close aria-label="Close">Close</button>
+    </div>
+    <div class="modal__body">
+      <p class="text-muted">This removes the project and its data. You can't undo this.</p>
+    </div>
+    <div class="modal__footer"><button class="btn btn--secondary" type="button" data-close>Cancel</button><button
+        class="btn btn--danger" type="button" data-close>Delete project</button></div>
+  </dialog>
+  <div class="toast-region" id="toasts" aria-live="polite"></div>
+
+  <script>
+    // 1. Generate token swatches from the CSS variables (so the page never drifts from tokens.css).
+    const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
+    document.getElementById('color-scales').innerHTML = ['primary', 'neutral', 'success', 'warning', 'danger'].map(n =>
+      `<div><h3 class="text-lg mb-2">${n}</h3><div class="swatches">${shades.map(s =>
+        `<div class="swatch"><i style="background:var(--${n}-${s})"></i><span>${s}</span></div>`).join('')}</div></div>`).join('');
+    document.getElementById('spacing').innerHTML = [1, 2, 3, 4, 5, 6, 7, 8].map(i =>
+      `<div class="flex items-center gap-3 text-xs text-muted"><span style="width:4rem">space-${i}</span><div class="bar" style="width:var(--space-${i})"></div></div>`).join('');
+    document.getElementById('radius-shadow').innerHTML = ['sm', 'md', 'lg', 'xl'].map((r, i) =>
+      `<div class="p-5 text-sm text-center bg-surface border" style="border-radius:var(--radius-${r});box-shadow:var(--shadow-${i + 1})">radius-${r}<br>shadow-${i + 1}</div>`).join('');
+
+    // 2. Theme toggle.
+    const root = document.documentElement, tt = document.getElementById('theme-toggle');
+    tt.addEventListener('click', () => {
+      const dark = root.dataset.theme !== 'dark';
+      root.dataset.theme = dark ? 'dark' : 'light';
+      tt.textContent = dark ? 'Switch to light' : 'Switch to dark';
+    });
+
+    // 3. Tabs (arrow keys move between tabs).
+    const tabs = [...document.querySelectorAll('#tabs [role=tab]')];
+    function selectTab(t) {
+      tabs.forEach(x => {
+        const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
+        document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+      });
+      t.focus();
+    }
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => selectTab(t));
+      t.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight') selectTab(tabs[(i + 1) % tabs.length]);
+        if (e.key === 'ArrowLeft') selectTab(tabs[(i - 1 + tabs.length) % tabs.length]);
+      });
+    });
+
+    // 4. Modal.
+    const modal = document.getElementById('modal');
+    document.getElementById('open-modal').addEventListener('click', () => modal.showModal());
+    modal.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => modal.close()));
+    modal.addEventListener('click', e => { if (e.target === modal) modal.close(); });
+
+    // 5. Toast.
+    document.getElementById('show-toast').addEventListener('click', () => {
+      const el = document.createElement('div');
+      el.className = 'toast toast--success'; el.setAttribute('role', 'status'); el.textContent = 'Changes saved';
+      document.getElementById('toasts').append(el);
+      setTimeout(() => el.remove(), 3500);
+    });
+  </script>
+</body>
+
+</html>
